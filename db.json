@@ -1,0 +1,43 @@
+{
+  "users": [
+    {
+      "id": "de6b",
+      "email": "example@gmail.com",
+      "password": "example"
+    }
+  ],
+  "students": [
+    {
+      "id": "bdcc",
+      "title": "lesson-3",
+      "completed": false
+    },
+    {
+      "id": "a3f2",
+      "title": "erwfsd",
+      "completed": false
+    },
+    {
+      "id": "a342",
+      "title": "6-month_1-lesson.",
+      "completed": false
+    },
+    {
+      "id": "39c6",
+      "title": "eqwads",
+      "completed": false
+    },
+    {
+      "id": "9b44",
+      "title": "wadsz",
+      "completed": false
+    }
+  ],
+  "teachers": [
+    {
+      "id": "5679",
+      "title": "rweds",
+      "completed": false
+    }
+  ]
+}
