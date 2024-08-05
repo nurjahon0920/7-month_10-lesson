@@ -11,7 +11,7 @@
     rgb(250, 82, 82) 100%
   );
   animation: var(--timing) linear dance6123 infinite;
-  transform: scale(1.1) translateY(-1px);
+  transform: scale(1.05) translateY(-1px);
 }
 @keyframes dance6123 {
   to {
@@ -52,7 +52,7 @@ button {
     rgba(85, 236, 113, 0.897) 100%
   );
   animation: var(--timing) linear dance6123 infinite;
-  transform: scale(1.07) translateY(-1px);
+  transform: scale(1.05) translateY(-1px);
 }
 @keyframes dance6123 {
   to {

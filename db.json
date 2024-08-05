@@ -1,43 +1,120 @@
 {
-  "users": [
-    {
-      "id": "de6b",
-      "email": "example@gmail.com",
-      "password": "example"
-    }
-  ],
   "students": [
     {
-      "id": "bdcc",
-      "title": "lesson-3",
-      "completed": false
+      "id": "1",
+      "firstName": "Ali",
+      "lastName": "Veliyev",
+      "group": "A"
     },
     {
-      "id": "a3f2",
-      "title": "erwfsd",
-      "completed": false
+      "id": "2",
+      "firstName": "Gulnara",
+      "lastName": "Hassanova",
+      "group": "B"
     },
     {
-      "id": "a342",
-      "title": "6-month_1-lesson.",
-      "completed": false
+      "id": "3",
+      "firstName": "Omar",
+      "lastName": "Rahimov",
+      "group": "A"
     },
     {
-      "id": "39c6",
-      "title": "eqwads",
-      "completed": false
+      "id": "4",
+      "firstName": "Zarina",
+      "lastName": "Mirzayeva",
+      "group": "C"
     },
     {
-      "id": "9b44",
-      "title": "wadsz",
-      "completed": false
+      "id": "5",
+      "firstName": "Javlon",
+      "lastName": "Tashkentov",
+      "group": "B"
+    },
+    {
+      "id": "6",
+      "firstName": "Dilorom",
+      "lastName": "Saidova",
+      "group": "A"
+    },
+    {
+      "id": "7",
+      "firstName": "Rustam",
+      "lastName": "Yusupov",
+      "group": "C"
+    },
+    {
+      "id": "8",
+      "firstName": "Shahnoza",
+      "lastName": "Djalilova",
+      "group": "B"
+    },
+    {
+      "id": "b8ac",
+      "group": "A",
+      "firstName": "weqwa",
+      "lastName": "eq2w"
     }
   ],
   "teachers": [
     {
-      "id": "5679",
-      "title": "rweds",
-      "completed": false
+      "id": "1",
+      "firstName": "Ali",
+      "lastName": "Xanova",
+      "level": "Junior"
+    },
+    {
+      "id": "2",
+      "firstName": "Vali",
+      "lastName": "Otaev",
+      "level": "Middle"
+    },
+    {
+      "id": "3",
+      "firstName": "Said",
+      "lastName": "Raxmonov",
+      "level": "Senior"
+    },
+    {
+      "id": "4",
+      "firstName": "Nodira",
+      "lastName": "Sultonova",
+      "level": "Junior"
+    },
+    {
+      "id": "5",
+      "firstName": "Askar",
+      "lastName": "Dzhuraev",
+      "level": "Middle"
+    },
+    {
+      "id": "6",
+      "firstName": "Zarina",
+      "lastName": "Qodirova",
+      "level": "Senior"
+    },
+    {
+      "id": "7",
+      "firstName": "Javlon",
+      "lastName": "Mustafaev",
+      "level": "Junior"
+    },
+    {
+      "id": "8",
+      "firstName": "Maksud",
+      "lastName": "Yusupov",
+      "level": "Middle"
+    },
+    {
+      "id": "9",
+      "firstName": "Gulnora",
+      "lastName": "Kadyrova",
+      "level": "Senior"
+    },
+    {
+      "id": "10",
+      "firstName": "Rustam",
+      "lastName": "Saidov",
+      "level": "Junior"
     }
   ]
 }
