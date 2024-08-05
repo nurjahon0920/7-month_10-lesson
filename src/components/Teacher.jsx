@@ -27,7 +27,7 @@ const Teachers = () => {
   const { loading, Teachers, error } = useSelector((state) => state.Teacher);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [group, setGroup] = useState("");
+  const [Level, setLevel] = useState("");
   const [search, setSearch] = useState("");
   const dispatch = useDispatch();
 
@@ -41,7 +41,7 @@ const Teachers = () => {
     setIsEditing(false);
     setFirstName("");
     setLastName("");
-    setGroup("");
+    setLevel("");
     setEditTeacherId(null);
   };
 
@@ -53,12 +53,12 @@ const Teachers = () => {
     e.preventDefault();
     if (isEditing) {
       dispatch(
-        updateTeacher({ id: editTeacherId, group, firstName, lastName })
+        updateTeacher({ id: editTeacherId, Level, firstName, lastName })
       );
     } else {
       dispatch(
         addTeacher({
-          group,
+          Level,
           firstName,
           lastName,
         })
@@ -76,7 +76,7 @@ const Teachers = () => {
   const handleEdit = (Teacher) => {
     setFirstName(Teacher.firstName);
     setLastName(Teacher.lastName);
-    setGroup(Teacher.group);
+    setLevel(Teacher.Level);
     setEditTeacherId(Teacher.id);
     setIsEditing(true);
     handleOpen();
@@ -86,7 +86,7 @@ const Teachers = () => {
     (Teacher) =>
       Teacher.firstName.toLowerCase().includes(search.toLowerCase()) ||
       Teacher.lastName.toLowerCase().includes(search.toLowerCase()) ||
-      Teacher.group.toLowerCase().includes(search.toLowerCase())
+      Teacher.Level.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
@@ -136,10 +136,10 @@ const Teachers = () => {
                 <TextField
                   required
                   variant="outlined"
-                  label="Group"
+                  label="Level"
                   type="text"
-                  value={group}
-                  onChange={(e) => setGroup(e.target.value)}
+                  value={Level}
+                  onChange={(e) => setLevel(e.target.value)}
                   sx={{ mb: 2 }}
                 />
                 <Button type="submit" className="Add">
@@ -157,7 +157,7 @@ const Teachers = () => {
               <li key={Teacher.id} className="tr">
                 <p>{Teacher.firstName}</p>
                 <p>{Teacher.lastName}</p>
-                <p className="gr">{Teacher.group}</p>
+                <p className="gr">{Teacher.Level}</p>
                 <button
                   className="Delete"
                   onClick={() => handleDelete(Teacher.id)}>
