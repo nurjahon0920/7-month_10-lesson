@@ -6,7 +6,7 @@ import Profile from "./pages/Profile";
 import Student from "./components/Student";
 import { Provider } from "react-redux";
 import store from "./app/store";
-import Teachers from "./components/Teachers";
+import Teacher from "./components/Teacher";
 
 const App = () => {
   return (
@@ -17,7 +17,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Login />} />
               <Route path="/student" element={<Student />} />
-              <Route path="/teacher" element={<Teachers />} />
+              <Route path="/teacher" element={<Teacher />} />
               <Route path="/profile" element={<Profile />} />
             </Routes>
           </AuthProvider>

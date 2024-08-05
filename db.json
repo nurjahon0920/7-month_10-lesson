@@ -55,7 +55,7 @@
       "lastName": "eq2w"
     }
   ],
-  "teachers": [
+  "Teachers": [
     {
       "id": "1",
       "firstName": "Ali",

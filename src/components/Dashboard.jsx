@@ -124,7 +124,7 @@ export default function Dashboard() {
                 <ListItemIcon>
                   <PeopleIcon />
                 </ListItemIcon>
-                <ListItemText primary="Teachers" />
+                <ListItemText primary="Teacher" />
               </ListItemButton>
             </Link>
             <Link to="/student">

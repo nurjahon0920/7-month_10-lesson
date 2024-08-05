@@ -1,67 +1,67 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+
 export const fetchTeachers = createAsyncThunk(
-  "teachers/fetchTeachers",
+  "Teachers/fetchTeachers",
   async () => {
     try {
-      const res = await axios.get("http://localhost:3000/teachers");
-      const data = await res.data;
-      return data;
+      const res = await axios.get("http://localhost:3000/Teachers");
+      return res.data;
     } catch (err) {
-      return err.message;
+      throw new Error(err.response?.data?.message || err.message);
     }
   }
 );
+
 export const addTeacher = createAsyncThunk(
-  "teachers/addTeacher",
-  async (teacher) => {
+  "Teachers/addTeacher",
+  async (Teacher) => {
     try {
-      const res = await axios.post("http://localhost:3000/teachers", teacher);
-      const data = await res.data;
-      return data;
+      const res = await axios.post("http://localhost:3000/Teachers", Teacher);
+      return res.data;
     } catch (err) {
-      return err.message;
+      throw new Error(err.response?.data?.message || err.message);
     }
   }
 );
+
 export const deleteTeacher = createAsyncThunk(
-  "teachers/deleteTeacher",
+  "Teachers/deleteTeacher",
   async (id) => {
     try {
-      const res = await axios.delete(`http://localhost:3000/teachers/${id}`);
-      const data = await res.data;
-      return data;
+      await axios.delete(`http://localhost:3000/Teachers/${id}`);
+      return id;
     } catch (err) {
-      return err.message;
+      throw new Error(err.response?.data?.message || err.message);
     }
   }
 );
+
 export const updateTeacher = createAsyncThunk(
-  "teachers/updateTeacher",
-  async (teacher) => {
+  "Teachers/updateTeacher",
+  async (Teacher) => {
     try {
       const res = await axios.put(
-        `http://localhost:3000/teachers/${teacher.id}`,
-        teacher
+        `http://localhost:3000/Teachers/${Teacher.id}`,
+        Teacher
       );
-      const data = await res.data;
-      return data;
+      return res.data;
     } catch (err) {
-      return err.message;
+      throw new Error(err.response?.data?.message || err.message);
     }
   }
 );
+
 const initialState = {
   loading: false,
-  teachers: [],
+  Teachers: [],
   error: "",
 };
-const teacherSlice = createSlice({
-  name: "teacher",
+
+const TeacherSlice = createSlice({
+  name: "Teacher",
   initialState,
-  reducers: {
-    search: (state) => {},
-  },
+  reducers: {},
   extraReducers: (builder) => {
     // fetchTeachers
     builder.addCase(fetchTeachers.pending, (state) => {
@@ -69,59 +69,59 @@ const teacherSlice = createSlice({
     });
     builder.addCase(fetchTeachers.fulfilled, (state, action) => {
       state.loading = false;
-      state.teachers = action.payload;
+      state.Teachers = action.payload;
       state.error = "";
     });
     builder.addCase(fetchTeachers.rejected, (state, action) => {
       state.loading = false;
-      state.teachers = [];
-      state.error = action.payload;
+      state.Teachers = [];
+      state.error = action.error.message;
     });
-    //    addTeacher
+    // addTeacher
     builder.addCase(addTeacher.pending, (state) => {
       state.loading = true;
     });
     builder.addCase(addTeacher.fulfilled, (state, action) => {
       state.loading = false;
-      state.teachers = [...state.teachers, action.payload];
+      state.Teachers = [...state.Teachers, action.payload];
       state.error = "";
     });
     builder.addCase(addTeacher.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.payload;
+      state.error = action.error.message;
     });
-    //    deleteTeacher
+    // deleteTeacher
     builder.addCase(deleteTeacher.pending, (state) => {
       state.loading = true;
     });
     builder.addCase(deleteTeacher.fulfilled, (state, action) => {
       state.loading = false;
-      state.teachers = state.teachers.filter(
-        (teacher) => teacher.id !== action.payload.id
+      state.Teachers = state.Teachers.filter(
+        (Teacher) => Teacher.id !== action.payload
       );
       state.error = "";
     });
     builder.addCase(deleteTeacher.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.payload;
+      state.error = action.error.message;
     });
-    //    updateTeacher
+    // updateTeacher
     builder.addCase(updateTeacher.pending, (state) => {
       state.loading = true;
     });
     builder.addCase(updateTeacher.fulfilled, (state, action) => {
       state.loading = false;
-      state.teachers = state.teachers.map((teacher) =>
-        teacher.id === action.payload.id ? action.payload : teacher
+      state.Teachers = state.Teachers.map((Teacher) =>
+        Teacher.id === action.payload.id ? action.payload : Teacher
       );
       state.error = "";
     });
     builder.addCase(updateTeacher.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.payload;
+      state.error = action.error.message;
     });
   },
 });
 
-export const teacherReducer = teacherSlice.reducer;
-export const teacherActions = teacherSlice.actions;
+export const TeacherReducer = TeacherSlice.reducer;
+export const TeacherActions = TeacherSlice.actions;
