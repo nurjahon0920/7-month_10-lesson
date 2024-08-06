@@ -57,18 +57,6 @@
   ],
   "Teachers": [
     {
-      "id": "1",
-      "firstName": "Ali",
-      "lastName": "Xanova",
-      "level": "Junior"
-    },
-    {
-      "id": "2",
-      "firstName": "Vali",
-      "lastName": "Otaev",
-      "level": "Middle"
-    },
-    {
       "id": "3",
       "firstName": "Said",
       "lastName": "Raxmonov",
@@ -115,6 +103,12 @@
       "firstName": "Rustam",
       "lastName": "Saidov",
       "level": "Junior"
+    },
+    {
+      "id": "e69c",
+      "level": "sdf",
+      "firstName": "sdff",
+      "lastName": "edferdf"
     }
   ]
 }

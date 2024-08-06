@@ -59,7 +59,7 @@ const initialState = {
 };
 
 const studentSlice = createSlice({
-  name: "student",
+  name: "students",
   initialState,
   reducers: {},
   extraReducers: (builder) => {

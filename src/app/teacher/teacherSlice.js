@@ -63,7 +63,6 @@ const TeacherSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    // fetchTeachers
     builder.addCase(fetchTeachers.pending, (state) => {
       state.loading = true;
     });
@@ -77,7 +76,7 @@ const TeacherSlice = createSlice({
       state.Teachers = [];
       state.error = action.error.message;
     });
-    // addTeacher
+
     builder.addCase(addTeacher.pending, (state) => {
       state.loading = true;
     });
@@ -90,7 +89,7 @@ const TeacherSlice = createSlice({
       state.loading = false;
       state.error = action.error.message;
     });
-    // deleteTeacher
+
     builder.addCase(deleteTeacher.pending, (state) => {
       state.loading = true;
     });
@@ -105,7 +104,7 @@ const TeacherSlice = createSlice({
       state.loading = false;
       state.error = action.error.message;
     });
-    // updateTeacher
+
     builder.addCase(updateTeacher.pending, (state) => {
       state.loading = true;
     });
@@ -123,5 +122,6 @@ const TeacherSlice = createSlice({
   },
 });
 
-export const TeacherReducer = TeacherSlice.reducer;
+// Default eksportni `TeacherReducer` nomi bilan export qilin
+export default TeacherSlice.reducer;
 export const TeacherActions = TeacherSlice.actions;

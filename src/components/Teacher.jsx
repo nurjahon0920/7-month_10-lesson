@@ -12,8 +12,6 @@ import { Box, Button, Modal, TextField } from "@mui/material";
 const style = {
   position: "absolute",
   top: "50%",
-  display: "flex",
-  direction: "column",
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 500,
@@ -24,10 +22,10 @@ const style = {
 };
 
 const Teachers = () => {
-  const { loading, Teachers, error } = useSelector((state) => state.Teacher);
+  const { loading, Teachers, error } = useSelector((state) => state.teacher);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [Level, setLevel] = useState("");
+  const [level, setLevel] = useState("");
   const [search, setSearch] = useState("");
   const dispatch = useDispatch();
 
@@ -53,12 +51,12 @@ const Teachers = () => {
     e.preventDefault();
     if (isEditing) {
       dispatch(
-        updateTeacher({ id: editTeacherId, Level, firstName, lastName })
+        updateTeacher({ id: editTeacherId, level, firstName, lastName })
       );
     } else {
       dispatch(
         addTeacher({
-          Level,
+          level,
           firstName,
           lastName,
         })
@@ -73,30 +71,26 @@ const Teachers = () => {
     }
   };
 
-  const handleEdit = (Teacher) => {
-    setFirstName(Teacher.firstName);
-    setLastName(Teacher.lastName);
-    setLevel(Teacher.Level);
-    setEditTeacherId(Teacher.id);
+  const handleEdit = (teacher) => {
+    setFirstName(teacher.firstName);
+    setLastName(teacher.lastName);
+    setLevel(teacher.level);
+    setEditTeacherId(teacher.id);
     setIsEditing(true);
     handleOpen();
   };
 
-  const filteredTeachers = Teachers.filter(
-    (Teacher) =>
-      Teacher.firstName.toLowerCase().includes(search.toLowerCase()) ||
-      Teacher.lastName.toLowerCase().includes(search.toLowerCase()) ||
-      Teacher.Level.toLowerCase().includes(search.toLowerCase())
+  const filteredTeachers = (Teachers || []).filter(
+    (teacher) =>
+      teacher.firstName.toLowerCase().includes(search.toLowerCase()) ||
+      teacher.lastName.toLowerCase().includes(search.toLowerCase()) ||
+      teacher.level.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
     <div style={{ display: "flex" }}>
       <Dashboard />
-      <div
-        style={{
-          paddingTop: "100px",
-          paddingLeft: "50px",
-        }}>
+      <div style={{ paddingTop: "100px", paddingLeft: "50px" }}>
         <div>
           <TextField
             variant="outlined"
@@ -111,8 +105,8 @@ const Teachers = () => {
           <Modal
             open={open}
             onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description">
+            aria-labelledby="modal-title"
+            aria-describedby="modal-description">
             <Box sx={style}>
               <form onSubmit={handleSubmit} className="form_cl">
                 <TextField
@@ -138,7 +132,7 @@ const Teachers = () => {
                   variant="outlined"
                   label="Level"
                   type="text"
-                  value={Level}
+                  value={level}
                   onChange={(e) => setLevel(e.target.value)}
                   sx={{ mb: 2 }}
                 />
@@ -149,21 +143,21 @@ const Teachers = () => {
             </Box>
           </Modal>
         </div>
-        {loading && <div className="loader"></div>}
+        {loading && <div className="loader">Loading...</div>}
         {error && <h2>{error}</h2>}
         {filteredTeachers.length > 0 && (
           <ol>
-            {filteredTeachers.map((Teacher) => (
-              <li key={Teacher.id} className="tr">
-                <p>{Teacher.firstName}</p>
-                <p>{Teacher.lastName}</p>
-                <p className="gr">{Teacher.Level}</p>
+            {filteredTeachers.map((teacher) => (
+              <li key={teacher.id} className="tr">
+                <p>{teacher.firstName}</p>
+                <p>{teacher.lastName}</p>
+                <p className="gr">{teacher.level}</p>
                 <button
                   className="Delete"
-                  onClick={() => handleDelete(Teacher.id)}>
+                  onClick={() => handleDelete(teacher.id)}>
                   Delete
                 </button>
-                <button className="Update" onClick={() => handleEdit(Teacher)}>
+                <button className="Update" onClick={() => handleEdit(teacher)}>
                   Edit
                 </button>
               </li>

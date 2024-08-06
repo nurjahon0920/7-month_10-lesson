@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
+import teacherReducer from "./Teacher/TeacherSlice"; // Default import
 import { studentReducer } from "./student/studentSlice";
-import { teacherReducer } from "./teacher/teacherSlice";
 
 const store = configureStore({
   reducer: {
     teacher: teacherReducer,
-    student: studentReducer,
+    students: studentReducer,
   },
 });
 

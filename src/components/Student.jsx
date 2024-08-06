@@ -5,15 +5,13 @@ import {
   deleteStudent,
   addStudent,
   updateStudent,
-} from "../app/student/studentSlice";
+} from "../app/student/studentSlice"; // E'tibor bering, bu import yo'li o'zgargan
 import Dashboard from "./Dashboard";
 import { Box, Button, Modal, TextField } from "@mui/material";
 
 const style = {
   position: "absolute",
   top: "50%",
-  display: "flex",
-  direction: "column",
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 500,
@@ -24,7 +22,7 @@ const style = {
 };
 
 const Students = () => {
-  const { loading, students, error } = useSelector((state) => state.student);
+  const { loading, students, error } = useSelector((state) => state.students); // E'tibor bering, bu yerda 'students' ishlatilmoqda
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [group, setGroup] = useState("");
@@ -82,7 +80,7 @@ const Students = () => {
     handleOpen();
   };
 
-  const filteredStudents = students.filter(
+  const filteredStudents = (students || []).filter(
     (student) =>
       student.firstName.toLowerCase().includes(search.toLowerCase()) ||
       student.lastName.toLowerCase().includes(search.toLowerCase()) ||
@@ -92,11 +90,7 @@ const Students = () => {
   return (
     <div style={{ display: "flex" }}>
       <Dashboard />
-      <div
-        style={{
-          paddingTop: "100px",
-          paddingLeft: "50px",
-        }}>
+      <div style={{ paddingTop: "100px", paddingLeft: "50px" }}>
         <div>
           <TextField
             variant="outlined"
@@ -111,8 +105,8 @@ const Students = () => {
           <Modal
             open={open}
             onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description">
+            aria-labelledby="modal-title"
+            aria-describedby="modal-description">
             <Box sx={style}>
               <form onSubmit={handleSubmit} className="form_cl">
                 <TextField
@@ -149,7 +143,7 @@ const Students = () => {
             </Box>
           </Modal>
         </div>
-        {loading && <div className="loader"></div>}
+        {loading && <div className="loader">Loading...</div>}
         {error && <h2>{error}</h2>}
         {filteredStudents.length > 0 && (
           <ol>
